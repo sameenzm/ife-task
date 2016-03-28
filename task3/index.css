@@ -1,0 +1,54 @@
+@charset "UTF-8";
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+.clearfix {
+  overflow: hidden;
+  zoom: 1;
+}
+p {
+  text-indent: 2em;
+}
+.container {
+  position: relative;
+  max-height: 500px;
+  background-color: #eee;
+  border: 1px solid #999;
+  padding: 20px;
+}
+.left {
+  position: relative;
+  float: left;
+  width: 200px;
+  background-color: #fff;
+  border: 1px solid #999;
+}
+.right {
+  background-color: #fff;
+  float: right;
+  width: 120px;
+  border: 1px solid #999;
+  padding: 20px 0;
+  text-align: center;
+}
+.center {
+  min-height: 400px;
+  background-color: #fff;
+  border: 1px solid #999;
+  margin-left: 220px;
+  margin-right: 140px;
+  padding: 20px;
+}
+.left img {
+  padding: 16px;
+}
+.left strong {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+}
+.right img {
+  margin-top: 10px;
+}
