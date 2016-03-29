@@ -1,0 +1,28 @@
+@charset "UTF-8";
+.box {
+  position: absolute; /* 第3行~第9行是居中的关键代码 */
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -200px;
+  height: 200px;
+  width: 400px;       /* here */
+  background-color: #ccc;
+  overflow: hidden;
+}
+.left-top {
+  position: absolute;
+  left: -50px;
+  top: -50px;
+}
+.right-bottom {
+  position: absolute;
+  bottom: -50px;
+  right: -50px;
+}
+.corner {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  background-color: #e74987;
+}

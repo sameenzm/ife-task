@@ -1,0 +1,31 @@
+@charset "UTF-8";
+.box {
+  width: 100%;			/* 第3行~第8行是居中的关键代码 */
+  height: 100%;
+  display: -webkit-flex; /* Safari */
+  display: flex;
+  justify-content: center;  /* 左右居中 */
+  align-items: center;		/* 上下居中 */
+}
+.inner {
+  position: relative;
+  height: 200px;
+  width: 400px;
+  background-color: #ccc;
+  overflow: hidden;
+}
+.left {
+  top: -50px;
+  left: -50px;
+}
+.right {
+  right: -50px;
+  bottom: -50px;
+}
+.corner {
+  position: absolute;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  background-color: #e74987;
+}
