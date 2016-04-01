@@ -1,0 +1,392 @@
+@charset "UTF-8";
+html,
+body {
+  width: 100%;
+  height: 100%;
+  min-width: 1280px;
+  font-family: 'Microsoft YaHei','微软雅黑','sans-sirif';
+}
+html,
+body,
+ul,li,
+a,
+p,
+div,span,
+h1,h2,h3,h4,h5,h6,
+section,
+form {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+ul li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}
+.clearfix {
+  overflow: hidden;
+  zoom: 1;
+}
+header {
+  height: 50px;
+  line-height: 50px;
+  background-color: #fff;
+  border-bottom: 2px solid #eee;
+}
+header h1 {
+  display: inline-block;
+  height: inherit;
+  margin-left: 50px;
+}
+header h1 span{
+  font-size: 20px;
+  font-family: 'Microsoft YaHei','微软雅黑','sans-sirif';
+}
+header h1 img {
+  margin-right: 10px;
+  vertical-align: middle;
+}
+nav {
+  margin-right: 50px;  
+}
+nav a {
+  height: 48px;
+  display: inline-block;
+  padding: 0 16px;
+  color: #7c7a82;
+  font-size: 14px;
+}
+.active {
+  color: #e74f4d;
+  border-bottom: 4px solid #e74f4d;
+}
+.login {
+  color: #e74f4d;
+}
+.login-logo {
+  margin-right: 4px;
+  vertical-align: text-bottom;
+}
+#banner {
+  position: relative;
+  min-height: 600px;
+  background: url('../img/bg.jpg') no-repeat;
+  background-size: cover;
+  color: #fff;
+}
+#banner h2 {
+  font-size: 60px;
+  font-weight: 400;
+}
+#banner p {
+  font-size: 20px;
+}
+#banner button {
+  width: 280px;
+  height: 60px;
+  margin-top: 30px;
+  background-color: #e8504f;
+  border: 0;
+  color: #fff;
+  font-size: 30px;
+  font-family: 'Microsoft YaHei','微软雅黑','sans-sirif';
+  letter-spacing: 2px;
+}
+.banner-text {
+  position: absolute;
+  top: 240px;
+  left: 160px;
+}
+.blocks {
+  min-height: 250px;
+}
+.block {
+  width: 25%;
+  text-align: center;
+}
+.block img {
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+.block p {
+  font-size: 14px;
+  color: #787878;
+  padding: 0 80px;
+  border-left: 2px solid #c3c3c3;
+}
+.unknown {
+  background-color: #ededec;
+  min-height: 300px;
+  text-align: center;
+}
+.unknown img {
+	margin-top: 50px;
+}
+.unknown p {
+  font-size: 50px;
+  color: #a3a3a3;
+}
+.city {
+  min-height: 340px;
+  background: url('../img/bg_map.jpg') no-repeat;
+  background-size: cover;
+  text-align: center;
+  color: #fff;
+}
+.city h3 {
+  padding-top: 80px;
+  font-size: 20px;
+  font-weight: 400;
+}
+.city p {
+  margin-top: 20px;
+  font-size: 14px;
+}
+.city form {
+	margin-top: 30px;
+}
+.city form select {
+  width: 220px;
+  height: 34px;
+  border: 1px #E74F4D solid;
+}
+.city form option {
+  padding: 10px;
+}
+.city form button {
+  width: 220px;
+  height: 34px;
+  background-color: #E74F4D;
+  border: none;
+  color: #fff;
+  letter-spacing: 20px;
+}
+.exhibition {
+  min-width: 500px;
+  background-color: #f8f8f8;
+}
+.show {
+  width: 25%;
+}
+.part-left {
+  display: inline-block;
+  width: 60%;
+  height: 500px;
+  background: url('../img/img02.jpg') no-repeat;
+  background-size: contain;
+  text-align: center;
+  color: #fff;
+}
+.part-left h3{
+  font-size: 50px;
+  font-weight: 400;
+  margin-top: 80px;
+}
+.part-left span {
+  display: inline-block;
+  margin-top: -34px;
+  font-size: 150px;
+}
+.part-left p {
+  font-size: 24px;
+}
+.part-right {
+  width: 40%;
+  text-align: center;
+  display: inline-block;
+}
+.part-right h3 {
+  margin-top: 150px;
+  margin-bottom: 50px;
+  color: #666;
+  font-size: 22px;
+}
+.part-right h3 span {
+  color: #E74F4D;
+}
+.part-right p {
+  text-align: left;
+  padding: 0 100px;
+  font-size: 12px;
+  line-height: 2em;
+  color: #999;
+}
+.part-right button {
+  width: 100px;
+  height: 34px;
+  margin-top: 30px;
+  background-color: #fff;
+  border: 1px solid #E74F4D;
+  color: #E74F4D;
+  cursor: pointer;
+}
+.part-right button:hover {
+  background-color: #E74F4D;
+  color: #fff;
+}
+.more {
+  height: 400px;
+}
+.more-left {
+  width: 66%;
+  height: 100%;
+}
+.more-right {
+  width: 34%;
+  height: 100%;
+  background: url('../img/img03.jpg') no-repeat;
+  background-size: 100% 100%;
+}
+.m-left {
+  width: 50%;
+  height: 100%;
+  background-color: #e74f4d;
+  text-align: center;
+}
+.m-right {
+  width: 50%;
+  height: 100%;
+  background-color: #fff;
+  text-align: center;
+}
+.m-left p, .m-right p {
+  margin-top: 160px;
+  font-size: 20px;
+}
+.m-left p {
+  color: #fff;
+}
+.m-left button, .m-right button {
+  width: 180px;
+  height: 50px;
+  font-size: 20px;
+  font-family: 'Microsoft YaHei','微软雅黑','sans-sirif';
+  margin-top: 40px;
+  font-weight: 400;
+}
+.m-right button { 
+  background-color: #fff;
+  border: 1px solid #e95958;
+  color:  #e95958;
+}
+.m-left button { 
+  background-color: #e95958;
+  border: 1px solid #fff; 
+  color: #fff;
+}
+.more hr {
+  width: 40px;
+  height: 2px;
+  border: none;
+  margin-top: 20px;
+}
+.m-left hr {
+  background-color: #fff;
+}
+.m-right hr {
+  background-color: #abaaaa;
+}
+.join {
+  height: 500px;
+  padding: 30px;
+}
+.join h3,.join .sub{
+  text-align: center;
+}
+.join h3 {
+  margin-top: 50px;
+}
+.sub {
+  font-size: 14px;
+  color: #a7a7a7;
+  margin-bottom: 50px;
+}
+.description {
+  width: 40%;
+  display: inline-block;
+}
+.join-form {
+  display: inline-block;
+  width: 60%;
+}
+.description h4{
+  font-size: 14px;
+}
+.description div {
+  padding: 0 80px;
+  margin-bottom: 30px;
+}
+.description p {
+  font-size: 12px;
+  color: #333;
+}
+.description span {
+  font-size: 10px;
+}
+.join-form input {
+  width: 300px;
+  height: 34px;
+  background-color: #ededef;
+  border: 0;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+.join-form textarea {
+  width: 605px;
+  background-color: #ededef;
+  height: 200px;
+  border: 0;
+  margin-top: 10px;
+}
+.join-form button {
+  width: 610px;
+  height: 34px;
+  background-color: #ededef;
+  margin-top: 10px;
+  border: 0;
+}
+footer {
+  height: 380px;
+  background-color: #33363f;
+  text-align: center;
+  color: #fff;
+  margin-top: 50px;
+  padding-top: 50px;
+}
+footer h3 {
+  font-size: 20px;
+}
+footer p {
+  font-size: 10px;
+}
+footer input {
+  width: 400px;
+  height: 34px;
+  border: none;
+  margin-top: 50px;
+}
+footer button {
+  color: #fff;
+  width: 100px;
+  height: 36px;
+  border: none;
+  background-color: #717189;
+}
+.join-pic {
+  margin-top: 50px;
+}
+.join-pic img {
+  margin-right: 30px;
+}
+.foot-bottom {
+  margin-top: 100px;
+  background-color: #30303a;
+}
