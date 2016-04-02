@@ -178,10 +178,10 @@ nav a {
 }
 .part-left {
   display: inline-block;
-  width: 60%;
+  width: 66%;
   height: 500px;
   background: url('../img/img02.jpg') no-repeat;
-  background-size: contain;
+  background-size: 100% 100%;
   text-align: center;
   color: #fff;
 }
@@ -199,9 +199,21 @@ nav a {
   font-size: 24px;
 }
 .part-right {
-  width: 40%;
+  width: 34%;
   text-align: center;
   display: inline-block;
+  position: relative;
+}
+.part-right:before {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  border: 18px solid transparent;
+  border-right-width: 32px;
+  border-right-color: #fff;
+  right: 100%;
+  top: 50%;
 }
 .part-right h3 {
   margin-top: 150px;
@@ -214,7 +226,7 @@ nav a {
 }
 .part-right p {
   text-align: left;
-  padding: 0 100px;
+  padding: 0 50px;
   font-size: 12px;
   line-height: 2em;
   color: #999;
@@ -238,6 +250,7 @@ nav a {
 .more-left {
   width: 66%;
   height: 100%;
+  position: relative;
 }
 .more-right {
   width: 34%;
@@ -257,6 +270,18 @@ nav a {
   background-color: #fff;
   text-align: center;
 }
+.m-right:after {
+  border: 18px solid transparent;
+  content: ' ';
+  width: 0;
+  height: 0;
+  border-left-width: 32px;
+  border-left-color: #fff;
+  position: absolute;
+  left: 100%;
+  top: 50%;
+}
+
 .m-left p, .m-right p {
   margin-top: 160px;
   font-size: 20px;
