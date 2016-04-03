@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+    <title>表格排序</title>
+</head>
+<style type="text/css">
+    table{
+        width: 500px;
+        height: 200px;
+        position: relative;
+        border-width: 0px 0px 1px 1px;
+      border-style: solid;
+    }  
+    tr{
+        height: 40px;
+    }
+    td,th{
+        width: 25%;
+         border-width: 1px 1px 0 0;
+       border-style: solid;
+        padding: 0;
+        margin: 0;
+    }
+</style>
+<body>
+<p>实现表格信息的排序功能，当点击表头的属性区域，将表格信息进行排序切换功能，即第一次点击为降序排序，再一次点击进行升序排序。</p>
+<table id="table" cellpadding="1" cellspacing="1">
+    <thead>
+        <tr bgcolor="grey">
+            <th>姓名</th>
+            <th onclick="sortTable(0)">力量</th>
+            <th onclick="sortTable(1)">敏捷</th>
+            <th onclick="sortTable(2)">智力</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>德鲁伊</th>
+            <td>17</td>
+            <td>24</td>
+            <td>13</td>
+        </tr>
+        <tr>
+            <th>月之骑士</th>
+            <td>15</td>
+            <td>22</td>
+            <td>16</td>
+        </tr>
+        <tr>
+            <th>众神归王</th>
+            <td>19</td>
+            <td>35</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <th>流浪剑客</th>
+            <td>23</td>
+            <td>15</td>
+            <td>14</td>
+        </tr>
+    </tbody>
+</table>
+<script type="text/javascript">
+//标记是否排序
+var sortStatus = [false, false, false];
+var sortTable = function (num) {
+    var tbody = document.getElementsByTagName('tbody')[0];
+    var rowsArray = [];
+    var colsArray = [];
+    // 把行和列装进相应的数组中
+    for(var i = 0; i < tbody.rows.length; i++){
+      rowsArray[i] = tbody.rows[i];   //第一行=>整个第一行数据（n同理）
+      colsArray[i] = rowsArray[i].cells[num+1];  //第一列=>第一行,用户点击的那一列 对应的数据
+    }
+    //排序
+    if(!sortStatus[num]) {
+      colsArray.sort(function(a, b) {
+        return b.innerText - a.innerText; //状态为false，则降序排序
+      });
+      sortStatus[num] = true;
+    }else {
+      colsArray.reverse();              //把顺序反过来
+      sortStatus[num] = false;          
+    }
+    // 一列动，其他格子也要对应着动，那么把它们存到一个新数组中
+    var rowsTemArray = [];
+    for(var i = 0; i < rowsArray.length; i++) {
+        var colsTemArray = [];
+        for(var j = 0; j < colsArray.length; j++) {
+            // 每一次内层的循环，就是把第i行,每一个格子的内容存进去（j个格子）
+            colsTemArray[j] = colsArray[i].parentNode.cells[j].innerHTML;
+        }
+        // 循环完了内层，则获得某一整行 每一个格子。存进rowsTemArray
+        rowsTemArray[i] = colsTemArray;
+    }
+    for(var i = 0; i < rowsArray.length; i++) {
+        for(var j = 0; j < colsArray.length; j++){
+            rowsArray[i].cells[j].innerHTML = rowsTemArray[i][j];
+        }
+    }
+}
+</script>
+</body>
+</html>
