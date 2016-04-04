@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>triangle</title>
+	<style>
+		#demo {
+		    width: 100px;
+		    height: 100px;
+		    background-color: #fff;
+		    position: relative;
+		    border: 2px solid #333;
+		}
+		#demo:after, #demo:before {
+			border: solid transparent;
+			content: '';
+			width: 0;
+			height: 0;
+			position: absolute;
+			left: 100%;
+		}
+		#demo:after {
+		 	border-width: 10px;
+		 	border-left-color: #fff;
+		 	top: 20px;
+		 }
+		 #demo:before {
+		 	border-width: 12px;
+		 	border-left-color: #333;
+		 	top: 18px;
+		 }
+	</style>
+</head>
+<body>
+	<div id="demo"></div>
+</body>
+</html>
