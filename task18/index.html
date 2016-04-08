@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task18</title>
+	<style>
+		.queue{
+			background-color: #eee;
+			width: 900px;
+			height: 300px;
+			padding: 30px;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" name="ipt">
+	<input type="button" id="left-in" class="btn" value="左侧入">
+	<input type="button" id="right-in" class="btn" value="右侧入">
+	<input type="button" id="left-out" class="btn" value="左侧出">
+	<input type="button" id="right-out" class="btn" value="右侧出">
+	<div class="queue"></div>
+</body>
+<script type="text/javascript">
+	$ = function (el) {return document.querySelector(el);};
+	var data = [];
+	var render = function (){
+		$('.queue').innerHTML = data.map(function(d){return '<span style="background-color: #efc301; padding: 10px;margin: 10px;">'+ d +'</span>'}).join("");
+	}
+
+	var deal = function deal(func, succ) {
+		var args = [].slice.call(arguments,2);
+		// 等价写法：
+		// var args = Array().slice.call(arguments,2);
+		// var args = Array.prototype.slice.call(arguments,2);
+		return function(e){
+			try {
+				var arg = args.map(function(item){
+					console.log(item);
+					return typeof item === "function" ? item(e) : item;
+				});
+				var result = func.apply(data,arg);
+				if(succ != null){
+					succ(result);
+				}
+			}catch (ex){
+				alert(ex.message);
+			}
+			render();
+		};
+	}
+
+	var getInputValue = function () {
+		var numStr = $('input').value;
+		if(!validate(numStr)) throw new Error('input');
+		return parseInt(numStr);
+	}
+
+	var getClickIndex = function (e){
+		var node = e.target;
+		return [].indexOf.call(node.parseInt.children, node);
+	}
+	var validate = function (str){
+		return /^\d+$/.test(str);
+	}
+
+	$('#left-in').onclick = deal([].unshift, null, getInputValue);
+	$('#right-in').onclick = deal([].push,null,getInputValue);
+	$('#left-out').onclick = deal([].shift, window.alert);
+	$('#right-out').onclick = deal([].pop,window.alert);
+	$('.queue').onclick = deal([].splice, null,getClickIndex,1);
+</script>
+</html>
