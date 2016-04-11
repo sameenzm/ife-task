@@ -49,7 +49,6 @@
 	var getInputValue = function() {
 		var num = $('#ipt').value;
 		if(!validate(num)) {throw new Error('input must be numbers');}
-		// assert(!validate(num),"input must be numbers!");
 		return parseInt(num);
 	}
 	var getClickIndex = function(e) {
