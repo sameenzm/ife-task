@@ -5,15 +5,12 @@
 	<title>task18</title>
 	<style>
 		#queue{
-			background-color: #eee;
-			width: 900px;
-			height: 300px;
 			padding: 30px;
 		}
 	</style>
 </head>
 <body>
-	<input type="text" name="ipt">
+	<input type="text" name="ipt" id="ipt">
 	<input type="button" id="left-in" class="btn" value="左侧入">
 	<input type="button" id="right-in" class="btn" value="右侧入">
 	<input type="button" id="left-out" class="btn" value="左侧出">
@@ -21,45 +18,48 @@
 	<div id="queue"></div>
 </body>
 <script type="text/javascript">
-	$ = function (el) {return document.querySelector(el);};
+	$ = function (el) {return document.querySelector(el);}
 	var data = [];
-	var deal = function deal(func, succ) {
+	var render = function() {
+		$('#queue').innerHTML = data.map(function(d){return '<span style="background-color: #efc301; padding: 10px;margin: 10px;">'+ d +'</span>'}).join("");
+	}
+	var deal = function(func,succ){
+		// 要第3个参数，也就是执行什么方法，比如left-in的getInputValue，变成数组形式，
 		var args = [].slice.call(arguments, 2);
 		// 等价写法：
 		// var args = Array().slice.call(arguments,2);
 		// var args = Array.prototype.slice.call(arguments,2);
-		return function(e){
+		return function(e) {
 			try {
 				var arg = args.map(function(item){
 					return typeof item === "function" ? item(e) : item;
 				});
-				var result = func.apply(data,arg);
+				var result = func.apply(data, arg);
+				// 如果第二个参数不是null，则代表是“出”，那就执行传进来的方法（alert），把结果带上
 				(succ != null) && succ(result);
-			}catch (ex){
+			}catch(ex){
 				alert(ex.message);
 			}
 			render();
-		};
+		}
 	}
-	var render = function (){
-		$('#queue').innerHTML = data.map(function(d) {return '<span style="background-color: #efc301; padding: 10px;margin: 10px;">'+ d +'</span>'}).join("");
-	}
-	var getInputValue = function () {
-		var numStr = $('input').value;
-		if(!validate(numStr)) throw new Error('input');
-		return parseInt(numStr);
-	}
-	var validate = function (str){
+	var validate = function (str) {
 		return /^\d+$/.test(str);
 	}
-	var getClickIndex = function (e){
+	var getInputValue = function() {
+		var num = $('#ipt').value;
+		if(!validate(num)) {throw new Error('input must be numbers');}
+		// assert(!validate(num),"input must be numbers!");
+		return parseInt(num);
+	}
+	var getClickIndex = function(e) {
 		var node = e.target;
-		return [].indexOf.call(node.parseInt.children, node);
+		return [].indexOf.call(node.parentNode.children, node);
 	}
 	$('#left-in').onclick = deal([].unshift, null, getInputValue);
-	$('#right-in').onclick = deal([].push, null, getInputValue);
-	$('#left-out').onclick = deal([].shift, window.alert);
-	$('#right-out').onclick = deal([].pop, window.alert);
+	$('#right-in').onclick = deal([].push,null,getInputValue);
+	$('#left-out').onclick = deal([].shift,window.alert);
+	$('#right-out').onclick = deal([].pop,window.alert);
 	$('#queue').onclick = deal([].splice, null, getClickIndex, 1);
 </script>
 </html>
