@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task18</title>
+	<style>
+		#queue{
+			padding: 30px;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" id="ipt">
+	<input type="button" value="左侧入">
+	<input type="button" value="右侧入">
+	<input type="button" value="左侧出">
+	<input type="button" value="右侧出">
+	<div id="queue"></div>
+</body>
+<script type="text/javascript">
+	$ = function (el) {return document.querySelectorAll(el);}
+	var result = $('#queue');
+	var btnList = $('input');
+	// 跨浏览器的事件处理方法
+	var addEvent = function(element, event, listener){
+		if(element.addEventListener){		//IE9、Firefox、Safari、Chrome和Opera支持
+			element.addEventListener(event, listener,false);
+		}
+		else if(element.attachEvent){		//IE
+			element.attachEvent('on' + event, listener);
+		}
+		else {
+			element["on"+event] = listener;
+		}
+	}
+	var validate = function(str){
+		return /^\d+$/.test(str);
+	}
+	var queue = {
+		str: [],
+		leftPush: function(num){
+			this.str.unshift(num);
+			this.paint();
+		},
+		rightPush: function(num){
+			this.str.push(num);
+			this.paint();
+		},
+		isEmpty: function(num){
+			return (this.str.length == 0);
+		},
+		leftPop: function(){
+			if(!this.isEmpty()){
+				alert(this.str.shift());
+				this.paint();
+			}else{
+				alert("The queue is empty!");
+			}
+		},
+		rightPop: function(){
+			if(!this.isEmpty()){
+				alert(this.str.pop());
+				this.paint();
+			}
+			else{
+				alert("The queue is empty!");
+			}
+		},
+		paint: function(){
+			var str = "";
+			this.str.map(function(v){
+				str += "<span style='background-color: #eee;margin: 10px;padding: 20px;'>"+ parseInt(v) +"</span>";
+			})
+			result[0].innerHTML = str;
+			addSpanDelEvent();
+		},
+		deleteId: function(id){
+			this.str.splice(id,1);
+			this.paint();
+		}
+	}
+	//为queue中的每个span绑定删除函数
+	function addSpanDelEvent(){
+		var len = result[0].childNodes.length;
+		for(var i = 0; i < len; i++){
+			var span = result[0].childNodes[i];
+			addEvent(span, "click", function(cur){
+				return function(){
+					return queue.deleteId(i);
+				}
+			}());
+		}
+	}
+	//监听4个按钮的click事件
+	addEvent(btnList[1], "click", function(){
+		var ipt = btnList[0].value;
+		validate(ipt) ? queue.leftPush(ipt) : alert("Please enter number");
+	});
+	addEvent(btnList[2], "click", function(){
+		var ipt = btnList[0].value;
+		validate(ipt) ? queue.rightPush(ipt) : alert("Please enter number");
+	})
+	addEvent(btnList[3], "click", function(){queue.leftPop();});
+	addEvent(btnList[4], "click", function(){queue.rightPop();});
+</script>
+</html>
