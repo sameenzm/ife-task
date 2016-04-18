@@ -66,8 +66,7 @@
 var sortStatus = [false, false, false];
 var sortTable = function (num) {
     var tbody = document.getElementsByTagName('tbody')[0];
-    var rowsArray = [];
-    var colsArray = [];
+    var rowsArray = [], colsArray = [];
     // 把行和列装进相应的数组中
     for(var i = 0; i < tbody.rows.length; i++){
       rowsArray[i] = tbody.rows[i];   //第一行=>整个第一行数据（n同理）
