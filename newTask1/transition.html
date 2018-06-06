@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>No.1制作一个简单的菜单动画效果 </title>
+  <style type="text/css">
+    html,
+    body {
+      height: 100%;
+    }
+
+    .container {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .content {
+      text-align: center;
+    }
+
+    .text {
+      transition: color 1s;
+      -moz-transition: color 1s;
+      -webkit-transition: color 1s;
+      -o-transition: color 1s;
+    }
+
+    .line {
+      height: 2px;
+      background: purple;
+      margin: 10px auto;    /*让线从中间到两边，否则线会从左到右*/
+      transition: width 1s;
+      -o-transition: width 1s;
+      -webkit-transition: width 1s;
+      -moz-transition: width 1s;
+    }
+
+    .line.before {
+      width: 0;
+    }
+
+    .line.after {
+      width: 130px;
+    }
+
+    .text.before {
+      color: #000;
+    }
+
+    .text.after {
+      color: purple;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="content">
+      <div class="text before">学习transition啦</div>
+      <div class="line before"></div>
+      <button id="js-btn">切换样式</button>
+    </div>
+  </div>
+</body>
+
+<script type="text/javascript">
+  var flag = true;
+  var doc = document;
+  var btn = doc.getElementById("js-btn");
+
+  var handler = function () {
+    var text = doc.getElementsByClassName('text')[0];
+    var line = doc.getElementsByClassName('line')[0];
+    if (flag) {
+      text.className = 'text after';
+      line.className = 'line after';
+    } else {
+      text.className = 'text before';
+      line.className = 'line before';
+    }
+    flag = !flag;
+  };
+
+  if (document.addEventListener) {
+    btn.addEventListener('click', handler);
+  }
+  else if (document.attachEvent) { //IE
+    btn.attachEvent('click', handler)
+  }
+  else {
+    btn.onclick = handler();
+  }
+</script>
+
+</html>
